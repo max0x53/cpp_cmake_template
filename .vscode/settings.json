@@ -1,0 +1,11 @@
+{
+    // https://github.com/clangd/vscode-clangd/issues/48
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}",
+        "--clang-tidy",
+        "--header-insertion=iwyu"
+    ],
+    "cmake.parallelJobs": 0,
+    "cmake.buildBeforeRun": true
+}

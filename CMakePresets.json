@@ -1,0 +1,94 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "generator": "Unix Makefiles",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/out/build/${presetName}" 
+        },
+        {
+            "name": "linux-debug",
+            "inherits": [
+                "default"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "MATH_BUILD_TESTS": {
+                    "type": "BOOL",
+                    "value": "ON"
+                }
+            }
+        },
+        {
+            "name": "linux-release",
+            "inherits": [
+                "default"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "android",
+            "hidden": true,
+            "inherits": [
+                "default"
+            ],
+            "toolchainFile": "toolchains/android.cmake"
+        },
+        {
+            "name": "android-debug",
+            "inherits": [
+                "android",
+                "linux-debug"
+            ]
+        },
+        {
+            "name": "android-release",
+            "inherits": [
+                "android",
+                "linux-release"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "linux-debug",
+            "displayName": "linux-debug",
+            "configurePreset": "linux-debug",
+            "description": "Debug build for linux"
+        },
+        {
+            "name": "linux-release",
+            "displayName": "linux-release",
+            "configurePreset": "linux-release",
+            "description": "Release build for linux"
+        },
+        {
+            "name": "android-debug",
+            "displayName": "android-debug",
+            "configurePreset": "android-debug",
+            "description": "Debug build for android"
+        },
+        {
+            "name": "android-release",
+            "displayName": "android-release",
+            "configurePreset": "android-release",
+            "description": "Release build for android"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "linux-test",
+            "displayName": "linux-test",
+            "configurePreset": "linux-debug",
+            "description": "Test build for linux",
+            "output": {"outputOnFailure": true}
+        }
+    ]
+}

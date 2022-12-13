@@ -1,0 +1,23 @@
+Language: Cpp
+BasedOnStyle: LLVM
+IndentWidth: 4
+
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  # Headers in "".
+- Regex: '".+"'
+  Priority: 6
+  # Test Headers in <>.
+- Regex: <(gtest|gmock|catch2).+>
+  Priority: 4
+  # Headers in <../...>.
+- Regex: <.+\/.+>
+  Priority: 3
+  # Headers in <> with extension.
+- Regex: <.+\.h>
+  Priority: 2
+  # Headers in <>.
+- Regex: <.+>
+  Priority: 1
+ColumnLimit: 100
