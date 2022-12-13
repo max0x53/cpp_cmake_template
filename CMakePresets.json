@@ -9,7 +9,7 @@
             "name": "default",
             "generator": "Unix Makefiles",
             "hidden": true,
-            "binaryDir": "${sourceDir}/out/build/${presetName}" 
+            "binaryDir": "${sourceDir}/out/build/${presetName}"
         },
         {
             "name": "linux-debug",
@@ -32,28 +32,6 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
-        },
-        {
-            "name": "android",
-            "hidden": true,
-            "inherits": [
-                "default"
-            ],
-            "toolchainFile": "toolchains/android.cmake"
-        },
-        {
-            "name": "android-debug",
-            "inherits": [
-                "android",
-                "linux-debug"
-            ]
-        },
-        {
-            "name": "android-release",
-            "inherits": [
-                "android",
-                "linux-release"
-            ]
         }
     ],
     "buildPresets": [
@@ -68,18 +46,6 @@
             "displayName": "linux-release",
             "configurePreset": "linux-release",
             "description": "Release build for linux"
-        },
-        {
-            "name": "android-debug",
-            "displayName": "android-debug",
-            "configurePreset": "android-debug",
-            "description": "Debug build for android"
-        },
-        {
-            "name": "android-release",
-            "displayName": "android-release",
-            "configurePreset": "android-release",
-            "description": "Release build for android"
         }
     ],
     "testPresets": [
@@ -88,7 +54,9 @@
             "displayName": "linux-test",
             "configurePreset": "linux-debug",
             "description": "Test build for linux",
-            "output": {"outputOnFailure": true}
+            "output": {
+                "outputOnFailure": true
+            }
         }
     ]
 }

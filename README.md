@@ -2,7 +2,34 @@
 
 ## Build Instructions
 
+### Android
+
+In order to target an Android build, you must have the NDK downloaded onto your local system.
+The NDK is much smaller than AOSP and takes approximately 2GB-4GB of disk space.
+
+The latest version of the NDK can be downloaded from [here](https://developer.android.com/ndk/downloads).
+
+Android Studio can also be used to download the NDK.
+Android Studio > Tools > SDK Manager > Appearance & Behaviour > System Settings > Android SDK > SDK Tools > NDK > Tick latest version > Apply
+
+It is recommended to always use the latest version of the NDK that is available.
+In order to use your NDK version you must change `"CMAKE_ANDROID_NDK": "<FULL_PATH_TO_NDK>",` within the `CMakeUserPresets.json` file to point to the full path of you NDK.
+
 ### Command Line
+
+First a target preset must be chosen.
+
+```bash
+> cmake --list-presets
+Available configure presets:
+
+  "linux-debug"
+  "linux-release"
+  "android-debug"
+  "android-release
+```
+
+Once you have chosen which build you are targeting run the following commands, in this example we are targeting `linux-debug`.
 
 ```bash
 cmake --preset linux-debug
@@ -48,4 +75,3 @@ Total Test time (real) =   0.01 sec
 ### VSCode
 
 Using the `cmake-tools` extension again, along the bottom toolbar will be an option to choose the test preset and a button to execute the tests.
-
