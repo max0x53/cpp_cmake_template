@@ -6,15 +6,16 @@
     },
     "configurePresets": [
         {
-            "name": "default",
-            "generator": "Unix Makefiles",
+            "name": "base",
             "hidden": true,
+            "generator": "Unix Makefiles",
             "binaryDir": "${sourceDir}/out/build/${presetName}"
         },
         {
-            "name": "linux-debug",
+            "name": "debug",
+            "hidden": true,
             "inherits": [
-                "default"
+                "base"
             ],
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
@@ -25,13 +26,30 @@
             }
         },
         {
-            "name": "linux-release",
+            "name": "release",
+            "hidden": true,
             "inherits": [
-                "default"
+                "base"
             ],
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
+        },
+        {
+            "name": "linux-debug",
+            "displayName": "linux-debug",
+            "inherits": [
+                "base",
+                "debug"
+            ]
+        },
+        {
+            "name": "linux-release",
+            "displayName": "linux-release",
+            "inherits": [
+                "base",
+                "release"
+            ]
         }
     ],
     "buildPresets": [
